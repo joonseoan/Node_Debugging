@@ -1,0 +1,93 @@
+4.	
+NPM
+Except for a few commands like “start”
+We must put “run” to execute the npm command.
+
+"scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "start": "node app2.js",
+    "start-server": "node app2.js"
+},
+	Npm start (OK)
+	Npm start-server (error)
+	Npm run start-server(OK)
+
+
+5.	NPM and Packages
+ 
+6.	Global Module VS Core Module VS 3rd Party Module
+Global Features vs Core Modules vs Third-Party Modules
+Section 4, Lecture 43
+The last lectures contained important concepts about available Node.js features and how to unlock them.
+You can basically differentiate between:
+•	Global features: Keywords like const or function but also some global objects like process
+•	Core Node.js Modules: Examples would be the file-system module ("fs"), the path module ("path") or the Http module ("http")
+•	Third-party Modules: Installed via npm install - you can add any kind of feature to your app via this way
+Global features are always available, you don't need to import them into the files where you want to use them.
+Core Node.js Modules don't need to be installed (NO npm install is required) but you need to import them when you want to use features exposed by them.
+Example:
+const fs = require('fs');
+You can now use the fs object exported by the "fs" module.
+Third-party Modules need to be installed (via npm install in the project folder) AND imported.
+Example (which you don't need to understand yet - we'll cover this later in the course):
+1.	// In terminal/ command prompt
+2.	npm install --save express-session
+1.	// In code file (e.g. app.js)
+2.	const sessions = require('express-session');
+Browse Q&A
+Continue
+
+
+
+Global & Local npm Packages
+Section 4, Lecture 45
+In the last lecture, we added nodemon as a local dependency to our project.
+The good thing about local dependencies is that you can share projects without the node_modules folder (where they are stored) and you can run npm install in a project to then re-create that node_modules folder. This allows you to share only your source code, hence reducing the size of the shared project vastly.
+The attached course code snippets also are shared in that way, hence you need to run npm install in the extracted packages to be able to run my code!
+I showed that nodemon app.js would not work in the terminal or command line because we don't use local dependencies there but global packages.
+Only Global Package is used with its own name. We need to install again the package in a shared project, though. Otherwise, the local packages is used with npm. We do not need to reinstall it. Just implement npm install.
+You could install nodemon globally if you wanted (this is NOT required though - because we can just run it locally): npm install -g nodemon would do the trick. Specifically the -g flag ensures that the package gets added as a global package which you now can use anywhere on your machine, directly from inside the terminal or command prompt.
+7.	Error: Syntax error, Runtime Error, and Logical Error
+-	Syntax error : error message with red line 
+-	Runtime Error: error message (like can’t find the module, or can’t stop at the spot.)
+-	Logical error: no error message but got incorrect value we did not expect
+
+8.	Debug for Logical Error
+Debug Console -> at the end of the terminal, write a command that executed in the code.
+7.‘debugger’ Update
+
+-	Menu -> Debug -> Add Configuration
+-	Must use nodemon in global
+-	
+-	(할 수 있는 일)
+-	옆에 창에서 현재 variable 상태 확인
+-	옆에 창 Variables에서 value 직접 변경 및 결과 값 확인
+-	Debug terminal에서 먼저 함수 값 처리 및 결과 확인
+-	이전 line을 breakpoint로 설정 하고PLAY Button눌러서 다시 시작
+-	-g nodemon사용해서 값 변경 및 자동으로 변경된 값 확인
+-	Local nodemon 은 반드시 스톱하고 debugmode에서 시작 및 브라우저에서 값입력
+
+{
+    // Use IntelliSense to learn about possible attributes.
+    // Hover to view descriptions of existing attributes.
+    // For more information, visit: https://go.microsoft.com/fwlink/?linkid=830387
+    "version": "0.2.0",
+    "configurations": [
+
+        {
+            "type": "node",
+            "request": "launch",
+            "name": "Launch Program",
+            "program": "${workspaceFolder}/firstServer\\app2.js",
+            "restart": true,
+            "runtimeExecutable": "nodemon",
+		// need to install nodemon globally
+		// we can still use debug console, by the way.
+"console": "integratedTerminal"
+
+        }
+    ]
+}
+
+9.	Wrap up
+ 
